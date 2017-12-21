@@ -20,17 +20,18 @@ public class TransactionRepository {
     }
 
     public void addDeposit(int amount) {
-        final Transaction depositTransaction = new Transaction(clock.todayAsString(), amount);
-        transactions.add(depositTransaction);
+        final Transaction deposit = new Transaction(clock.todayAsString(), amount);
+        transactions.add(deposit);
     }
 
     public void addwithdrawal(int amount) {
-        throw new UnsupportedOperationException();
+        final Transaction withdrawal = new Transaction(clock.todayAsString(), -amount);
+        transactions.add(withdrawal);
     }
 
     public List<Transaction> allTransactions() {
         //make sure what is returned can not be changed by
-        //retruning a copy of unmodifiableList
+        //returning a unmodifiable copy list of transactions
         return Collections.unmodifiableList(transactions);
     }
 }

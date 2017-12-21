@@ -25,17 +25,27 @@ public class TransactionRepositoryShould {
     @Before
     public void initialise() {
         transactionRepository = new TransactionRepository(clock);
+        given(clock.todayAsString()).willReturn(TODAY);
     }
 
     @Test
     public void create_and_store_a_deposit_transaction() {
-        given(clock.todayAsString()).willReturn(TODAY);
         transactionRepository.addDeposit(100);
 
         List<Transaction> transactions = transactionRepository.allTransactions();
 
         assertThat(transactions.size(), is(1));
         assertThat(transactions.get(0), is(transaction(TODAY, 100)));
+    }
+
+    @Test
+    public void create_and_store_withdrawal_transaction() {
+        transactionRepository.addwithdrawal(100) ;
+
+        List<Transaction> transactions = transactionRepository.allTransactions();
+
+        assertThat(transactions.size(), is(1));
+        assertThat(transactions.get(0), is(transaction(TODAY, -100)));
     }
 
     private Transaction transaction(String date, int amount) {
