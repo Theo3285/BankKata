@@ -41,3 +41,13 @@ Statement should have transaction in the following format
 4. Don't worry about spacing in the statement printed on the console
 
 Credit: Sandro Mancuso @codurance
+
+Start implementing feature acceptance criteria
+Mock external world dependencies (database, console, etc) but 
+use real internal implementation to test the SUT
+Always throw an exception to know what to do next
+Remove them to make the acceptance test fail for the right reason
+Once failing for the right reason, move to the inner loop of TDD
+
+Imagine side effect in the feet of the user, what is he doing
+Think of different usage to imagine direction and design
