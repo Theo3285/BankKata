@@ -51,3 +51,5 @@ Once failing for the right reason, move to the inner loop of TDD
 
 Imagine side effect in the feet of the user, what is he doing
 Think of different usage to imagine direction and design
+
+When getting deeper in the TDD cycle, question responsibility

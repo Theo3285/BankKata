@@ -2,6 +2,7 @@ package feature;
 
 import com.kata.tdd.bankkata.Account;
 import com.kata.tdd.bankkata.Console;
+import com.kata.tdd.bankkata.StatementPrinter;
 import com.kata.tdd.bankkata.TransactionRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +11,6 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import javax.security.auth.login.AccountException;
 
 import static org.mockito.Mockito.verify;
 
@@ -26,7 +25,8 @@ public class PrintStatementFeature {
         //Not a Mock because Acceptance tests the system as whole
         //Only external systems
         TransactionRepository transactionRepository = new TransactionRepository();
-        account = new Account(transactionRepository);
+        StatementPrinter statementPrinter = new StatementPrinter();
+        account = new Account(transactionRepository, statementPrinter);
     }
 
     @Test public void
