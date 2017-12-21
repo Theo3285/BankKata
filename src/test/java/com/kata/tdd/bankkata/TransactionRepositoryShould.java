@@ -1,3 +1,5 @@
+package com.kata.tdd.bankkata;
+
 import com.kata.tdd.bankkata.Clock;
 import com.kata.tdd.bankkata.Transaction;
 import com.kata.tdd.bankkata.TransactionRepository;

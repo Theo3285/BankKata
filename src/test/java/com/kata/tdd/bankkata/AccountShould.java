@@ -1,3 +1,5 @@
+package com.kata.tdd.bankkata;
+
 import com.kata.tdd.bankkata.Account;
 import com.kata.tdd.bankkata.StatementPrinter;
 import com.kata.tdd.bankkata.Transaction;
