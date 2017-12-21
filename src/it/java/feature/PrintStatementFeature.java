@@ -5,7 +5,9 @@ import com.kata.tdd.bankkata.Console;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.security.auth.login.AccountException;
@@ -32,9 +34,10 @@ public class PrintStatementFeature {
 
         account.printStatement();
 
-        verify(console).printLine("DATE | AMOUNT | BALANCE");
-        verify(console).printLine("12/12/2017 | 500.00 | 1400.00");
-        verify(console).printLine("10/12/2017 | -100.00 | 900.00");
-        verify(console).printLine("01/12/2017 | 1000.00 | 1000.00");
+        InOrder inOrder = Mockito.inOrder(console);
+        inOrder.verify(console).printLine("DATE | AMOUNT | BALANCE");
+        inOrder.verify(console).printLine("12/12/2017 | 500.00 | 1400.00");
+        inOrder.verify(console).printLine("10/12/2017 | -100.00 | 900.00");
+        inOrder.verify(console).printLine("01/12/2017 | 1000.00 | 1000.00");
     }
 }
