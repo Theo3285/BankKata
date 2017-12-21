@@ -42,14 +42,27 @@ Statement should have transaction in the following format
 
 Credit: Sandro Mancuso @codurance
 
-Start implementing feature acceptance criteria
+# Lesson learned
+
+Start by implementing feature acceptance criteria
 Mock external world dependencies (database, console, etc) but 
 use real internal implementation to test the SUT
-Always throw an exception to know what to do next
-Remove them to make the acceptance test fail for the right reason
+Always throw an exception to know what to do next after unit test 
+pass and are well refactored
+Remove the exception to make the acceptance test fail for the right reason
 Once failing for the right reason, move to the inner loop of TDD
 
-Imagine side effect in the feet of the user, what is he doing
+Imagine side effect in the feet of the user. What is he doing?
 Think of different usage to imagine direction and design
 
 When getting deeper in the TDD cycle, question responsibility
+
+For the sake of simplicity, use in memory DB and delay details
+
+It is extremely important to not test something that you can not control
+such as the system date. Your test will fail each time their is a change in
+the system you can not control. You need to control the randomness with 
+something you can Mock
+
+Always Assert first, then execute what to assert and finally initialise 
+what to execute and assert 

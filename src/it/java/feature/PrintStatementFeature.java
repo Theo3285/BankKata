@@ -1,9 +1,6 @@
 package feature;
 
-import com.kata.tdd.bankkata.Account;
-import com.kata.tdd.bankkata.Console;
-import com.kata.tdd.bankkata.StatementPrinter;
-import com.kata.tdd.bankkata.TransactionRepository;
+import com.kata.tdd.bankkata.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,12 +16,13 @@ public class PrintStatementFeature {
 
     @Mock Console console; //Treat Console like an external system such as a database
     private Account account;
+    @Mock Clock clock;
 
     @Before
     public void initialise() {
         //Not a Mock because Acceptance tests the system as whole
         //Only external systems
-        TransactionRepository transactionRepository = new TransactionRepository();
+        TransactionRepository transactionRepository = new TransactionRepository(clock);
         StatementPrinter statementPrinter = new StatementPrinter();
         account = new Account(transactionRepository, statementPrinter);
     }
