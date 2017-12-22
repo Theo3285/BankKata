@@ -1,20 +1,14 @@
 package com.kata.tdd.bankkata;
 
-import com.kata.tdd.bankkata.Account;
-import com.kata.tdd.bankkata.StatementPrinter;
-import com.kata.tdd.bankkata.Transaction;
-import com.kata.tdd.bankkata.TransactionRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import static java.util.Arrays.asList;
 
-import static java.util.Arrays.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 

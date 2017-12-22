@@ -5,7 +5,6 @@ public class Account {
     private StatementPrinter statementPrinter;
 
     public Account(TransactionRepository transactionRepository, StatementPrinter statementPrinter) {
-
         this.transactionRepository = transactionRepository;
         this.statementPrinter = statementPrinter;
     }

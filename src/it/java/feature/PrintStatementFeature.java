@@ -9,21 +9,20 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.verify;
-
 @RunWith(MockitoJUnitRunner.class)
 public class PrintStatementFeature {
 
     @Mock Console console; //Treat Console like an external system such as a database
-    private Account account;
     @Mock Clock clock;
+
+    private Account account;
 
     @Before
     public void initialise() {
         //Not a Mock because Acceptance tests the system as whole
         //Only external systems
         TransactionRepository transactionRepository = new TransactionRepository(clock);
-        StatementPrinter statementPrinter = new StatementPrinter();
+        StatementPrinter statementPrinter = new StatementPrinter(console);
         account = new Account(transactionRepository, statementPrinter);
     }
 
