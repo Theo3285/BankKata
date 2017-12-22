@@ -15,7 +15,7 @@ Create a simple bank application with the following features:
 
 Statement should have transaction in the following format
 
-| DATE     | AMOUNT | BALANCE |
+| DATE | AMOUNT | BALANCE |
 | :--: | :--: | :--: |
 | 12/12/2017 | 500.00  | 1400.00 |
 | 10/12/2017 | -100.00 | 900.00 |
