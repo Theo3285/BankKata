@@ -70,3 +70,24 @@ something you can Mock
 
 Always Assert first, then execute what to assert and finally initialise 
 what to execute and assert.
+
+this using stream, lambdas and method reference :
+        
+        AtomicInteger runningBalance = new AtomicInteger(0);
+        transactions.stream()
+                    .map(transaction -> statementLine(transaction, runningBalance))
+                    .collect(Collectors.toCollection(LinkedList::new))
+                    .descendingIterator()
+                    .forEachRemaining(console::printLine);
+
+is equal to this 
+
+        AtomicInteger runningBalance = new AtomicInteger(0);
+        LinkedList<String> lines = new LinkedList<>();
+        for (Transaction transaction : transactions) {
+            String line = statementLine(transaction, runningBalance);
+            lines.add(line);
+        }
+        for (int i = lines.size() -1; i >= 0; i--) {
+            console.printLine(lines.get(i));
+        }
