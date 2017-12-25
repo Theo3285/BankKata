@@ -24,4 +24,12 @@ public class Transaction {
     public int hashCode() {
         return Objects.hash(date, amount);
     }
+
+    public String date() {
+        return date;
+    }
+
+    public int amount() {
+        return amount;
+    }
 }
