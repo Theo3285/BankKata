@@ -1,5 +1,6 @@
 package com.kata.tdd.bankkata;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -20,10 +21,15 @@ public class StatementPrinterShould {
 
     private static final List<Transaction> NO_TRANSACTIONS = EMPTY_LIST;
 
+    StatementPrinter statementPrinter;
+
+    @Before
+    public void initialise() {
+        statementPrinter = new StatementPrinter(console);
+    }
+
     @Test
     public void always_print_the_header() {
-
-        StatementPrinter statementPrinter = new StatementPrinter(console);
 
         statementPrinter.print(NO_TRANSACTIONS);
 
@@ -32,8 +38,6 @@ public class StatementPrinterShould {
 
     @Test
     public void print_transactions_in_reverse_chronological_order() {
-
-        StatementPrinter statementPrinter = new StatementPrinter(console);
 
         List<Transaction> transactions = transactionContaining(
                                             deposit("01/12/2017", 1000),
