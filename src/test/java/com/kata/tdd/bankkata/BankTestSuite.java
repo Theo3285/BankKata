@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         AccountShould.class,
         TransactionRepositoryShould.class,
-        ClockShould.class
+        ClockShould.class,
+        StatementPrinterShould.class
 })
 public class BankTestSuite {
 }

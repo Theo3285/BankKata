@@ -25,21 +25,26 @@ public class StatementPrinter {
     public void print(List<Transaction> transactions) {
         console.printLine(STATEMENT_HEADER);
 
+        LinkedList<String> lines = mapStatementLines(transactions);
+
+        printStatementLines(lines);
+    }
+
+    private LinkedList<String> mapStatementLines(List<Transaction> transactions) {
         AtomicInteger runningBalance = new AtomicInteger(0);
         LinkedList<String> lines = new LinkedList<>();
         for (Transaction transaction : transactions) {
             String line = statementLine(transaction, runningBalance);
             lines.add(line);
         }
-        for (int i = lines.size() -1; i >= 0; i--) {
+        return lines;
+    }
+
+    private void printStatementLines(LinkedList<String> lines) {
+        final int size = lines.size();
+        for (int i = size -1; i >= 0; i--) {
             console.printLine(lines.get(i));
         }
-        //using lambdas:
-//        transactions.stream()
-//                .map(transaction -> statementLine(transaction, runningBalance))
-//                .collect(Collectors.toCollection(LinkedList::new))
-//                .descendingIterator()
-//                .forEachRemaining(console::printLine);
     }
 
     private String statementLine(Transaction transaction, AtomicInteger runningBalance) {
